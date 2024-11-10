@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #343a40;
+            min-height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #007bff;
+        }
+
+        form {
+            margin-top: 30px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 600px;
+            transition: all 0.3s ease;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"],
+        select {
+            padding: 10px;
+            margin: 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 14px;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <form id="employeeForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="Age" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="Gender" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">Male</option>
+                    <option value="2">Female</option>
+                    <option value="3">Other</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="maritalStatus">Marital Status:</label>
+                <select id="maritalStatus" name="MaritalStatus" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">Single</option>
+                    <option value="2">Married</option>
+                    <option value="3">Divorced</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="education">Education Level:</label>
+                <select id="education" name="Education" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">High School</option>
+                    <option value="2">Bachelor</option>
+                    <option value="3">Master</option>
+                    <option value="4">PhD</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <select id="department" name="Department" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">Finance</option>
+                    <option value="2">HR</option>
+                    <option value="3">IT</option>
+                    <option value="4">R&D</option>
+                    <option value="5">Sales</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="jobRole">Job Role:</label>
+                <select id="jobRole" name="JobRole" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">Analyst</option>
+                    <option value="2">Developer</option>
+                    <option value="3">Technician</option>
+                    <option value="4">Sales Executive</option>
+                    <option value="5">Manager</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="yearsAtCompany">Years at Company:</label>
+                <input type="number" id="yearsAtCompany" name="YearsAtCompany" required>
+            </div>
+            <div class="form-group">
+                <label for="yearsInCurrentRole">Years in Current Role:</label>
+                <input type="number" id="yearsInCurrentRole" name="YearsInCurrentRole" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="monthlyIncome">Monthly Income:</label>
+                <input type="number" id="monthlyIncome" name="MonthlyIncome" required>
+            </div>
+            <div class="form-group">
+                <label for="jobSatisfaction">Job Satisfaction (1-5):</label>
+                <select id="jobSatisfaction" name="JobSatisfaction" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="workLifeBalance">Work Life Balance (1-5):</label>
+                <select id="workLifeBalance" name="WorkLifeBalance" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="trainingTimesLastYear">Training Times Last Year:</label>
+                <input type="number" id="trainingTimesLastYear" name="TrainingTimesLastYear" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label for="overTime">OverTime:</label>
+                <select id="overTime" name="OverTime" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="1">Yes</option>
+                    <option value="2">No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="distanceFromHome">Distance from Home (km):</label>
+                <input type="number" id="distanceFromHome" name="DistanceFromHome" required>
+            </div>
+        </div>
+
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <script>
+        async function submitForm() {
+            const formData = new FormData(document.getElementById('employeeForm'));
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                const response = await fetch('http://localhost:5000/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ input: [data] })
+                });
+                const result = await response.json();
+                alert('Prediction: ' + result.predictions);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred while sending data.');
+            }
+        }
+    </script>
+</body>
+</html>
